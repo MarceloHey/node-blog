@@ -1,0 +1,31 @@
+<div class="jumbotron">
+    <h1 class="display-4">Bem vindo ao meu projetinho!</h1>
+    <p class="lead">Este é um BLOG simples utilizando NodeJS + ExpressJs + MongoDB + Handlebars.</p>
+    {{#if user}}
+    {{else}}
+    <hr class="my-4">
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="/usuario/registro" role="button">Crie uma conta</a>
+    </p>
+    {{/if}}
+
+</div>
+<hr>
+<h2>Postagens recentes</h2>
+{{#each postagens}}
+<div class="card mb-3 mt-3">
+    <div class="card-body">
+        <h4>{{titulo}}</h4>
+        <p>{{descricao}}</p>
+        <a href="/postagem/{{slug}}">
+            <button class="btn btn-primary">Leia mais</button>
+        </a>
+        <hr>
+        <small>Categoria: {{categoria.nome}}</small>
+        <br>
+        <small>Data de publicação: {{date}}</small>
+    </div>
+</div>
+{{else}}
+<div class="alert alert-info mt-3">Nenhuma postagem cadastrada</div>
+{{/each}}
